@@ -1,0 +1,68 @@
+<div id="multi_color_layer">
+<h4>Change printing speed to accomendte the enviornment</h4>
+
+<div style="text-align: center; margin: auto; width: 100%; padding-top: 5px; padding-bottom: 20px" data-bind="text: message"></div>
+<div  data-bind="visible: isAdmin">
+<div data-bind="visible: enabled">
+            <br/><br/>
+            <label class="control-label">Layers</label>
+            <div class="controls" style="margin-left: 100px; width: 70%" >
+                <input type="text" class="input-block-level" data-bind="value: layers">
+            </div>
+            <div style="margin-left: 100px; width: 70%; padding-bottom: 20px">
+            <small class="muted">Layers where the GCODE will be injected (space or comma separated). Code inserted usually at the <b>begining</b> of the layer.</small>
+            </div>
+
+            <form class="form-horizontal" style="text-align:center; width: 100%">
+                <label><input type="checkbox" value="duplicate" data-bind="checked: duplicate, enable:can_duplicate"/> Duplicate file</label>
+                <div><small class="muted">Apply changes to a copy of the gcode file. The new file will have "_multi" added at the end of it's name</small></div><br/>
+                <button data-bind="click: changeLayers">Process</button>
+                <div><small class="muted">Save GCODE (and regex) for future use and execute code injection</small></div>
+            </form>
+</div>
+
+    <div><small><a href="javascript:void(0);" class="muted" onclick="$(this).children().toggleClass('icon-caret-right icon-caret-down').parent().parent().parent().next().slideToggle('fast')"><i class="icon-caret-right"></i> Advanced Options</a></small></div>
+    <div class="hide">
+            <label class="control-label">Look for (regular expression)</label>
+            <div class="controls" style="margin-left: 100px; width: 70%;  padding-bottom: 20px">
+                <input type="text" class="input-block-level" data-bind="value: find_string, enable: enabled"><br/>
+                <i>{layer}</i> is a place holder for layers iteration.</i>
+            </div>
+			 <div class="controls" style="margin-left: 100px; width: 70%;  padding-bottom: 20px">
+                <input type="text" class="input-block-level" data-bind="value: find_string1, enable: enabled"><br/>
+                <i>{layer}</i> is a place holder for layers iteration.</i>
+            </div>
+			 <div class="controls" style="margin-left: 100px; width: 70%;  padding-bottom: 20px">
+                <input type="text" class="input-block-level" data-bind="value: find_string2, enable: enabled"><br/>
+                <i>{layer}</i> is a place holder for layers iteration.</i>
+            </div>
+            <br/><br/>
+	         <label class="control-label">Add GCODE</label>
+            <div class="controls" style="margin-left: 100px; width: 70%;  padding-bottom: 20px" >
+                <textarea cols="40" rows="6" class="input-block-level" data-bind="value: gcode, enable: enabled"></textarea>
+                <small class="muted">GCODE to be injected <b>after</b> the line matched by the regular expression (enter one GCODE per line)<br/>
+                The final code will need to set "M220 S100" for non traget layers</small><br/>
+
+            </div>
+			
+			<div class="controls" style="margin-left: 100px; width: 70%;  padding-bottom: 20px" >
+                <textarea cols="40" rows="6" class="input-block-level" data-bind="value: gcode1, enable: enabled"></textarea>
+                <small class="muted">GCODE to be injected <b>after</b> the line matched by the regular expression (enter one GCODE per line)<br/>
+                The final code will need to set "M220 S100" for non traget layers</small><br/>
+
+            </div>
+			<div class="controls" style="margin-left: 100px; width: 70%;  padding-bottom: 20px" >
+                <textarea cols="40" rows="6" class="input-block-level" data-bind="value: gcode2, enable: enabled"></textarea>
+                <small class="muted">GCODE to be injected <b>after</b> the line matched by the regular expression (enter one GCODE per line)<br/>
+                The final code will need to set "M220 S100" for non traget layers</small><br/>
+
+            </div>
+			
+			
+			
+			
+			
+			
+    </div>
+</div>    
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+   
+<script>
+
+var Request = require("request");
+
+Request.post({
+    "headers": { "content-type": "application/json" },
+    "url": "https://api.mediatek.com/mcs/v2/devices/DDGymmjy/datachannels/Temperature/datapoints",
+    "body": JSON.stringify({"code":200})}, (error, response, body) => {
+    if(error) {
+        return console.dir(error);
+    }
+    console.dir(JSON.parse(body));
+});
+	   
+	  // https://api.mediatek.com/mcs/v2/devices/DDGymmjy/datachannels/Temperature/datapoints //useful link MCS
+    </script>
+    
+</body>
+</html>

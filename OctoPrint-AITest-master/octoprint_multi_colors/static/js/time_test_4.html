@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+   
+<script>
+
+
+ var jsonData;
+   function TestJSONP()
+    {
+    $.ajax({
+        url: "http://time.jsontest.com",
+
+        // the name of the callback parameter, as specified by the YQL service
+        jsonp: "callback",
+
+        // tell jQuery we're expecting JSONP
+        dataType: "jsonp",
+
+        // tell YQL what we want and that we want JSON
+        data: {
+            //q: "select title,abstract,url from search.news where query=\"cat\"",
+            format: "json"
+        },
+
+        // work with the response
+        success: function (response) {
+            console.log(response.time); // server response
+            jsonData = JSON.stringify(response.time); // you can use jsonData variable in outside of the function
+			//alert(jsonData);
+        }
+    });
+      // alert (jsonData);
+	   return jsonData;
+	}
+
+var z = TestJSONP();
+alert (z);
+
+ </script>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+   
+<script>
+
+ function getCredentials() {
+       
+        $.ajax({
+            type: "get",
+            async: false,
+			
+            url: "http://api.mediatek.com/mcs/v2/devices/DCT60FBv/datachannels/longitude/datapoints",
+            data: {format: "json"},
+            //contentType: "application/json; charset=utf-8",
+            dataType: "json",	
+            //jsonp: "callback", 
+			success: function (response) {
+               console.log(response.code);			   
+			   y= JSON.stringify(response.code);
+               //alert (y);			   
+			},			
+	        error: function (jqXHR, textStatus, errorThrown) {
+                alert("get session failed " + errorThrown);
+            }
+        });
+       // alert (y);
+        return y;
+   };
+
+
+var as = getCredentials();
+alert (as);
+ 
+    </script>
+    
+</body>
+</html>
